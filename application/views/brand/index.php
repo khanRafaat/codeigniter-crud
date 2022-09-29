@@ -46,9 +46,11 @@
                         <div class="form-group row">
                             <label for="inputPassword" class="col-sm-4 col-form-label">Brand Name <span style="color:red">*</span></label>
                             <div class="col-sm-8">
-                                <input name="name" type="text" class="form-control" require>
+                                <input name="name" type="text" class="form-control" require pattern="[a-zA-Z0-9\s]+" id="name" onkeyup="validateInput()">
+                                <small id="validate" style="color:red"> </small>
                                 <?php echo form_error('name'); ?>
                             </div>
+
                         </div>
 
                 </div>
@@ -59,10 +61,12 @@
             </div>
         </div>
     </div>
+
+
     <!-- Add Modal End -->
-    <?php echo validation_errors(); ?>
+
     <div class="container">
-        <class class="row">
+        <div class class="row">
 
             <div class="col-md-12 mb-4">
                 <h1 class="text-center">Brand Details</h1>
@@ -91,7 +95,8 @@
                 ?>
 
             </div>
-        </class>
+        </div>
+
         <div class="card">
 
             <div class="card-body pt-4">
@@ -137,6 +142,19 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        function validateInput() {
+            var text = document.getElementById('name').value;
+            if (/[^a-zA-Z0-9\s]/.test(text)) {
+                document.getElementById('name').value = "";
+                document.getElementById('validate').innerHTML = "Only Alphabet and Numeric value allowed.";
+            }
+
+        }
+    </script>
+
+
 
 </body>
 

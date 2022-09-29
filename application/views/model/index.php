@@ -53,7 +53,7 @@
                                         <option value="<?php echo $brand['id'] ?>"><?php echo $brand['name'] ?></option>
                                     <?php } ?>
                                 </select>
-                                <?php echo form_error('name'); ?>
+                                
                             </div>
                         </div>
 
@@ -61,8 +61,8 @@
                         <div class="form-group row">
                             <label for="inputPassword" class="col-sm-4 col-form-label">Model Name <span style="color:red">*</span></label>
                             <div class="col-sm-8">
-                                <input name="name" type="text" class="form-control" require>
-                                <?php echo form_error('name'); ?>
+                                <input name="name" type="text" class="form-control" require id="name" onkeyup="validateInput()">
+                                <small id="validate" style="color:red"> </small>
                             </div>
                         </div>
 
@@ -154,7 +154,16 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function validateInput() {
+            var text = document.getElementById('name').value;
+            if (/[^a-zA-Z0-9\s]/.test(text)) {
+                document.getElementById('name').value = "";
+                document.getElementById('validate').innerHTML = "Only Alphabet and Numeric value allowed.";
+            }
 
+        }
+    </script>
 </body>
 
 </html>
