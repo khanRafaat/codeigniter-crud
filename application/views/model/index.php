@@ -135,9 +135,9 @@
                                         echo date_format($date, "d/m/Y");
                                         ?>
                                     </td>
-                                    <td><a href="<?php echo base_url() . 'index.php/models/edit/' . $model['id'] ?>" class="btn btn-warning text-white mr-1"><i class="fa-solid fa-pen-to-square font-weight-bold"></i></a>
+                                    <td><a href="<?php echo base_url() . 'index.php/models/edit/' . $model['id'] ?>" class="text-warning mr-1"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
 
-                                        <a href="<?php echo base_url() . 'index.php/models/delete/' . $model['id'] ?>" class="btn btn-danger " onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa-solid fa-trash "></i></a>
+                                        <a href="<?php echo base_url() . 'index.php/models/delete/' . $model['id'] ?>" class="btn text-danger " onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa-solid fa-trash fa-lg "></i></a>
                                     </td>
                                 </tr>
 
