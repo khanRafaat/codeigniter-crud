@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label for="inputPassword" class="col-sm-4 col-form-label">Brand Name <span style="color:red">*</span></label>
                             <div class="col-sm-8">
-                                <input name="name" type="text" class="form-control" require pattern="[a-zA-Z0-9\s]+" id="name" onkeyup="validateInput()">
+                                <input name="name" type="text" class="form-control" require pattern="[a-zA-Z0-9\s]+" id="name" onkeyup="validateForm()">
                                 <small id="validate" style="color:red"> </small>
                                 <?php echo form_error('name'); ?>
                             </div>
@@ -144,17 +144,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        function validateInput() {
-            var text = document.getElementById('name').value;
-            if (/[^a-zA-Z0-9\s]/.test(text)) {
-                document.getElementById('name').value = "";
+        function validateForm() {
+            var a = document.getElementById("name").value;
+            if (!a.length) {
+                document.getElementById('validate').innerHTML = "Input must be filled out.";
+                return false;
+            } else if (/[^a-zA-Z0-9\s]/.test(a)) {
                 document.getElementById('validate').innerHTML = "Only Alphabet and Numeric value allowed.";
+                return false;
+            } else if (a.length > 50) {
+                document.getElementById('validate').innerHTML = "Only 50 character length allowed.";
+                return false;
             }
-
         }
     </script>
-
-
 
 </body>
 
